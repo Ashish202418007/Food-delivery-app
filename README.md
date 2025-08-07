@@ -1,28 +1,40 @@
-# Food Delivery App - Database Design
+# Food Delivery ETL Pipeline Project
 
-## Overview
-The goal of this database is to represent the essential structure of a food delivery system in a normalized and relational format. It includes support for multiple restaurants, dynamic menus, customer orders, and delivery addresses.
+This project demonstrates a scalable, end-to-end ETL (Extract, Transform, Load) pipeline for a food delivery platform—similar to Zomato or Swiggy—combining traditional relational database design with modern big data tools.
 
-## Features
-- Customer registration and profile information  
-- Restaurant listings and contact details  
-- Menu items offered by multiple restaurants  
-- Shopping cart functionality with item quantities  
-- Order tracking and status  
-- Customer address storage for deliveries  
+### Core Features
 
-## Main Tables
+- **Relational Database Design:**  
+  Includes a normalized PostgreSQL schema tailored for food delivery operations, covering customers, orders, restaurants, menu management, carts, payment invoices, delivery partners, and more.
 
-- **Customer**: Stores customer personal and contact details  
-- **Restaurant**: Contains restaurant information including cuisine type and average price  
-- **MenuItem**: Stores food item details like name, price, and description  
-- **Restaurant_Menu**: Many-to-many mapping of menu items to restaurants  
-- **Cart**: Represents customer carts with total amount  
-- **Cart_Item**: Connects individual menu items to a cart with quantity  
-- **Orders**: Tracks placed orders, linked to customer and cart  
-- **Customer_Address**: Stores customer delivery addresses  
+- **Real-Time Data Ingestion with Kafka:**  
+  Utilizes Apache Kafka to stream real-time events such as order transactions, customer activity, delivery updates, and payment details.
 
-## Database Design Goals
-- Use foreign keys to establish proper relationships between tables  
-- Enforce data consistency using appropriate constraints  
-- Keep the schema normalized and modular for scalability  
+- **Schema Management:**  
+  Maintains strong data integrity and compatibility across microservices by integrating a Schema Registry for Kafka topics.
+
+- **Object Storage with MinIO (S3-Compatible):**  
+  Raw and semi-structured event data is landed in MinIO for batch analytics and persistence—enabling cost-effective, durable, and scalable data storage outside the database.
+
+- **Data Transformation with PySpark:**  
+  Apache Spark processes and transforms event streams and object data. ETL jobs cleanse, enrich, and join datasets for downstream analytics and business reporting.
+
+- **Data Warehousing:**  
+  The processed and analytics-ready data is loaded back into PostgreSQL for use by BI tools, dashboards, and operational analytics.
+
+- **Management & Monitoring:**  
+  Kafka Control Centre, ZooKeeper, and related utilities are used for system administration, health monitoring, and topic management.
+
+### Tech Stack
+
+- PostgreSQL (Relational Database)
+- Apache Kafka (Event Streaming)
+- Kafka Schema Registry
+- ZooKeeper (Kafka Coordination)
+- MinIO (S3-Compatible Object Storage)
+- Apache Spark (PySpark)
+- Kafka Control Centre
+
+### Problem Solved
+
+This pipeline design bridges the gap between transactional operations (OLTP) and high-volume analytical processing (OLAP), supporting both real-time streaming and scalable batch workflows for food delivery businesses.
