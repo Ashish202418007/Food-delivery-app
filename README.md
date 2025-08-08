@@ -3,7 +3,7 @@
 This project demonstrates a scalable, end-to-end ETL (Extract, Transform, Load) pipeline for a food delivery platform—similar to Zomato or Swiggy—combining traditional relational database design with modern big data tools.
 
 ### Core Features
-
+       
 - **Relational Database Design:**  
   Includes a normalized PostgreSQL schema tailored for food delivery operations, covering customers, orders, restaurants, menu management, carts, payment invoices, delivery partners, and more.
 
@@ -35,6 +35,6 @@ This project demonstrates a scalable, end-to-end ETL (Extract, Transform, Load) 
 - Apache Spark (PySpark)
 - Kafka Control Centre
 
-### Problem Solved
+### Problem Solved.
 
 This pipeline design bridges the gap between transactional operations (OLTP) and high-volume analytical processing (OLAP), supporting both real-time streaming and scalable batch workflows for food delivery businesses.
